@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GitHub Image Gallery</title>
+  <style>
+    :root{--bg:#000;--card:#0b0b0b;--muted:#bbb;--accent:#1e90ff}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:var(--bg); color:white; display:flex; flex-direction:column; gap:12px; align-items:center; padding:18px;
+    }
+    h1{font-size:16px; margin:0; font-weight:600}
+    main{width:100%; max-width:1100px; display:flex; flex-direction:column; gap:16px;}
+    .gallery{display:flex; flex-direction:column; gap:18px}
+    .card{background:var(--card); border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.03); box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    .img-wrap{width:100%; max-height:580px; display:flex; align-items:center; justify-content:center; background:#060606}
+    .img-wrap img{max-width:100%; max-height:580px; display:block}
+    .caption{padding:10px; color:var(--muted); font-size:14px; text-align:center;}
+  </style>
+</head>
+<body>
+  <h1>GitHub Image Gallery</h1>
+  <main>
+    <section id="gallery" class="gallery" aria-live="polite"></section>
+  </main>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+
+    function addCard(imageSrc, caption='INSERT TEXT'){
+      const card = document.createElement('article');
+      card.className = 'card';
+
+      const imgWrap = document.createElement('div'); imgWrap.className = 'img-wrap';
+      const img = document.createElement('img'); img.src = imageSrc; img.alt = caption;
+      imgWrap.appendChild(img);
+
+      const captionDiv = document.createElement('div');
+      captionDiv.className = 'caption';
+      captionDiv.textContent = caption;
+
+      card.appendChild(imgWrap);
+      card.appendChild(captionDiv);
+      gallery.appendChild(card);
+    }
+
+    // ========================
+    // Add your GitHub images here
+    // Format: addCard('images/filename.ext', 'INSERT TEXT');
+    addCard('images/image1.jpg', 'INSERT TEXT');
+    addCard('images/image2.png', 'INSERT TEXT');
+    // ========================
+
+    // Instructions:
+    // 1. Create a folder named 'images' in the same directory as index.html.
+    // 2. Upload your images to this 'images' folder.
+    // 3. Add a line for each image in the script using addCard('images/yourimage.jpg', 'INSERT TEXT');
+    // 4. Push your repo to GitHub. The page will display the images with "INSERT TEXT" captions below each.
+  </script>
+</body>
+</html>
